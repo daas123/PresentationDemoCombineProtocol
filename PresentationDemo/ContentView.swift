@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var user: User = User()
+    @ObservedObject var accountbal: Account = Account()
     var body: some View {
         NavigationView {
         VStack {
@@ -26,11 +27,13 @@ struct ContentView: View {
         .padding()
         .navigationBarTitle("First page")
         }.environmentObject(user)
+        .environmentObject(accountbal)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            
     }
 }

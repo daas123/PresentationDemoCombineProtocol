@@ -8,18 +8,27 @@
 import SwiftUI
 
 struct SecondView: View {
+    
+    @EnvironmentObject var userAccountbal : Account
+    
     var body: some View {
-        NavigationLink {
-            ThirdView()
-        } label: {
-            Text("Go to Third View ->")
+        VStack{
+            Text("hi there this is account balance \(userAccountbal.accountbal)")
+            TextField("enter bal", text: $userAccountbal.accountbal)
+                .textFieldStyle(.roundedBorder)
+            NavigationLink {
+                ThirdView()
+            } label: {
+                Text("Go to Third View ->")
+            }
+            
         }
-
     }
 }
 
 struct SecondView_Previews: PreviewProvider {
     static var previews: some View {
         SecondView()
+            .environmentObject(Account())
     }
 }

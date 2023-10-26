@@ -9,13 +9,20 @@ import SwiftUI
 
 struct ThirdView: View {
     @EnvironmentObject var user : User
+    @EnvironmentObject var bal : Account
     var body: some View {
-        Text("this the third view \(user.name)")
+        VStack{
+            Text("this the third view \(user.name)")
+            Text("User bal \(bal.accountbal)")
+        }
     }
 }
 
 struct ThirdView_Previews: PreviewProvider {
     static var previews: some View {
         ThirdView()
+            .environmentObject(User())
+            .environmentObject(Account())
+        
     }
 }
