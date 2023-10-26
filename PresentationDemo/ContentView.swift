@@ -8,14 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var user: User = User()
     var body: some View {
+        NavigationView {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Text("hello there \(user.name)")
+            TextField("Enter the Text", text: $user.name)
+                .textFieldStyle(.roundedBorder)
+            
+            NavigationLink {
+                SecondView()
+            } label: {
+                Text("Second Page")
+            }
+
         }
         .padding()
+        .navigationBarTitle("First page")
+        }.environmentObject(user)
     }
 }
 
